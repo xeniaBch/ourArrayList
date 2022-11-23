@@ -3,16 +3,18 @@ import java.util.Arrays;
 public class ourArrayList<T> implements OurList{
 
     int size;
+    int capacity;
 
     Object[] source;
 
     public ourArrayList() {
-        source = new Object[size];
+        this.capacity = 10;
+        source = new Object[capacity];
     }
 
     @Override
     public void add(Object elt) {
-        ensureCapacity(size+1);
+        if(size == capacity) ensureCapacity(capacity);
         source[size++] = elt;
     }
 
@@ -21,7 +23,7 @@ public class ourArrayList<T> implements OurList{
         if (index < 0 || index >= (size + 1)) {
             throw new IllegalArgumentException("illegal index:" + index);
         }
-        ensureCapacity(size+1);
+        if(size == capacity) ensureCapacity(capacity);
         System.arraycopy(source,index, source, index + 1, size - index);
         source[index] = elt;
         size++;
@@ -75,12 +77,12 @@ public class ourArrayList<T> implements OurList{
     //TODO: make comparator
     @Override
     public void sort() {
-
+        Arrays.sort(source);
     }
 
     private void ensureCapacity(int capacity){
         Object[] oldSource = source;
-        int newCapacity = (capacity * 3)/2 + 1;
+        int newCapacity = (capacity * 3 + 1)/2;
         source = Arrays.copyOf(oldSource, newCapacity);
     }
 

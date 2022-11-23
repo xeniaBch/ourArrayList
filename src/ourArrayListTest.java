@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class ourArrayListTest {
@@ -12,7 +14,6 @@ public class ourArrayListTest {
         arrayList.add(4);
         arrayList.add(2);
         arrayList.add(3);
-
         assertEquals(4, arrayList.size);
     }
 
@@ -23,7 +24,6 @@ public class ourArrayListTest {
         arrayList.add(2);
         arrayList.setElt(3, 1);
         arrayList.setElt(1, 2);
-
         assertEquals(5, arrayList.size);
     }
 
@@ -34,7 +34,6 @@ public class ourArrayListTest {
         arrayList.add(2);
         arrayList.setElt(3, 1);
         arrayList.setElt(1, 2);
-
         assertEquals(1, arrayList.getElt(2));
     }
 
@@ -69,7 +68,23 @@ public class ourArrayListTest {
         arrayList.setElt(1, 2);
         assertTrue(arrayList.couldRemove(2));
         assertEquals(4, arrayList.size());
-        System.out.println(arrayList.contains(2));
+        assertFalse(arrayList.contains(2));
+    }
 
+    @Test
+    public void testSort(){
+        arrayList.add(14);
+        arrayList.add(-3);
+        arrayList.add(4);
+        arrayList.add(0);
+        arrayList.setElt(18, 1);
+        arrayList.add(3);
+        arrayList.add(9);
+        arrayList.add(-8);
+        arrayList.add(12);
+        arrayList.add(7);
+        Integer[] res = {-8, -3, 0, 3, 4, 7, 9, 12, 14, 18};
+        arrayList.sort();
+        assertEquals(res[0], arrayList.getElt(0));
     }
 }
