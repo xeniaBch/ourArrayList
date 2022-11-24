@@ -1,4 +1,4 @@
-public interface OurList<T> extends Comparable<T>{
+public interface OurList<T> {
 
     public void add(T elt);
     public void setElt(T elt, int index); //added elt by index

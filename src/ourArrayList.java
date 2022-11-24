@@ -1,25 +1,25 @@
 import java.util.Arrays;
 
-public class ourArrayList<T> implements OurList{
+public class ourArrayList<T> implements OurList<T>{
 
     int size;
     int capacity;
 
-    Object[] source;
+    T[] source;
 
     public ourArrayList() {
         this.capacity = 10;
-        source = new Object[capacity];
+        source = (T[]) new Object[capacity];
     }
 
     @Override
-    public void add(Object elt) {
+    public void add(T elt) {
         if(size == capacity) ensureCapacity(capacity);
         source[size++] = elt;
     }
 
     @Override
-    public void setElt(Object elt, int index) {
+    public void setElt(T elt, int index) {
         if (index < 0 || index >= (size + 1)) {
             throw new IllegalArgumentException("illegal index:" + index);
         }
@@ -30,7 +30,7 @@ public class ourArrayList<T> implements OurList{
     }
 
     @Override
-    public Object getElt(int index) {
+    public T getElt(int index) {
       if(size == 0 || index > size){
           throw new IllegalArgumentException("illegal index:" + index);
       }
@@ -38,7 +38,7 @@ public class ourArrayList<T> implements OurList{
     }
 
     @Override
-    public boolean contains(Object elt) {
+    public boolean contains(T elt) {
         for (int i = 0; i < size; i++) {
             if(elt.equals(source[i])){
                 return true;
@@ -53,8 +53,8 @@ public class ourArrayList<T> implements OurList{
     }
 
     @Override
-    public Object remove(int index) {
-        Object removedElt = source[index];
+    public T remove(int index) {
+        T removedElt = source[index];
         int movedIndex = size - index - 1;
         if (movedIndex > 0) {
             System.arraycopy(source, index + 1, source, index, movedIndex);
@@ -81,13 +81,10 @@ public class ourArrayList<T> implements OurList{
     }
 
     private void ensureCapacity(int capacity){
-        Object[] oldSource = source;
+        T[] oldSource = source;
         int newCapacity = (capacity * 3 + 1)/2;
         source = Arrays.copyOf(oldSource, newCapacity);
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
+
 }

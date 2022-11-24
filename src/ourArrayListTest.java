@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -34,7 +35,7 @@ public class ourArrayListTest {
         arrayList.add(2);
         arrayList.setElt(3, 1);
         arrayList.setElt(1, 2);
-        assertEquals(1, arrayList.getElt(2));
+        assertEquals(Optional.of(1), arrayList.getElt(2));
     }
 
     @Test
@@ -54,7 +55,7 @@ public class ourArrayListTest {
         arrayList.add(2);
         arrayList.setElt(3, 1);
         arrayList.setElt(1, 2);
-        assertEquals(3, arrayList.remove(1));
+        assertEquals(Optional.of(3), arrayList.remove(1));
         assertEquals(4, arrayList.size());
         assertFalse( arrayList.contains(3));
     }
