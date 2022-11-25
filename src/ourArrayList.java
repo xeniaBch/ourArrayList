@@ -77,7 +77,7 @@ public class ourArrayList<T> implements OurList<T>{
     //TODO: make comparator
     @Override
     public void sort() {
-        Arrays.sort(source);
+        Arrays.sort(source,0, size());
     }
 
     private void ensureCapacity(int capacity){

@@ -80,11 +80,11 @@ public class ourArrayListTest {
         arrayList.add(0);
         arrayList.setElt(18, 1);
         arrayList.add(3);
-        arrayList.add(9);
-        arrayList.add(-8);
-        arrayList.add(12);
+       // arrayList.add(9);
+        //arrayList.add(-8);
+       // arrayList.add(12);
         arrayList.add(7);
-        Integer[] res = {-8, -3, 0, 3, 4, 7, 9, 12, 14, 18};
+        Integer[] res = { -3, 0, 3, 4, 7, 14, 18};
         arrayList.sort();
         assertEquals(res[0], arrayList.getElt(0));
     }
